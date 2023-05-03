@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wellness</title>
+    <link rel="stylesheet" href="balanced diet.css">
+  </head>
+
+
+  <body>
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="1b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 01</h2>
+          <p>Cook at home: Cooking at home allows you to control the ingredients in your meals and can help you make healthier choices.</p>
+        </div>
+      </div>
+      
+      <div class="slide">
+        <img src="2b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 02</h2>
+          <p>Eat a variety of foods from all the food groups: To ensure that you're getting all the nutrients that your body needs, eat a balanced mix of foods from each food group, including fruits, vegetables, whole grains, lean proteins, and healthy fats.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="3b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 03</h2>
+          <p>Pay attention to portion sizes: Eating too much of even healthy foods can lead to weight gain. Use measuring cups and spoons or a food scale to measure your portions, or learn to estimate portion sizes.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="4b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 04</h2>
+          <p>Eat plenty of fruits and vegetables: These foods are high in vitamins, minerals, and fiber, and low in calories. They can help you feel full and prevent overeating.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="5b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 05</h2>
+          <p>Choose whole grains: Whole grains are a good source of fiber and other nutrients, and can help you feel full for longer. Choose whole grain breads, pasta, and cereals.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="6b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 06</h2>
+          <p>Limit processed and sugary foods: These foods can be high in calories and low in nutrients. Limit your intake of processed foods, sugary drinks, and sweets.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="7b.jpg" alt="">
+        <div class="info">
+          <h2>Slide 07</h2>
+          <p>Stay hydrated: Drinking plenty of water is important for overall health and can help you feel full and prevent overeating.</p>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+
+  </body>
+</html>
+      

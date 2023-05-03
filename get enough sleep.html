@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wellness</title>
+    <link rel="stylesheet" href="get enough sleep.css">
+  </head>
+
+
+
+  <body>
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="1g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 01</h2>
+          <p>Stick to a sleep schedule: Go to bed and wake up at the same time every day, even on weekends.</p>
+        </div>
+      </div>
+      
+      <div class="slide">
+        <img src="2g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 02</h2>
+          <p>Create a relaxing bedtime routine: This can include taking a warm bath, reading a book, or listening to calming music.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="3g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 03</h2>
+          <p>Make your bedroom comfortable: Keep your bedroom cool, dark, and quiet. Invest in a comfortable mattress and pillows.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="4g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 04</h2>
+          <p>Limit caffeine and alcohol: Avoid consuming caffeine and alcohol in the evening, as they can disrupt your sleep.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="5g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 05</h2>
+          <p>Exercise regularly: Exercise can help improve the quality of your sleep, but avoid exercising too close to bedtime.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="6g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 06</h2>
+          <p>Avoid screens before bedtime: The blue light emitted from electronic devices can disrupt your sleep. Turn off your devices at least an hour before bedtime.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="7g.jpg" alt="">
+        <div class="info">
+          <h2>Slide 07</h2>
+          <p>Manage stress: Practice relaxation techniques, such as meditation or deep breathing, to help manage stress and promote better sleep.</p>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+
+  </body>
+</html>
+      

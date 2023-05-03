@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness</title>
+    <link rel="stylesheet" href="stay active.css">
+  </head>
+
+
+
+  <body>
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="1s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 01</h2>
+          <p>Find an exercise routine that you enjoy: This can be anything from running, swimming, dancing, yoga, or weight lifting.<br> By finding an activity that you enjoy, you will be more likely to stick to it.</p>
+        </div>
+      </div>
+      
+      <div class="slide">
+        <img src="2s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 02</h2>
+          <p>Schedule exercise into your day: Make exercise a part of your daily routine, just like you would with brushing your teeth or taking a shower. This will help you prioritize physical activity and make it a habit.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="3s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 03</h2>
+          <p>Set achievable goals: Start small and gradually increase your activity level. For example, start with a 10-minute walk and gradually increase the time or distance.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="4s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 04</h2>
+          <p>Make it a social activity: Join a fitness class, sports team or exercise with friends. Having someone to exercise with can be a great motivator.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="5s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 05</h2>
+          <p>Mix it up: Variety is key to preventing boredom and staying motivated. Try different types of exercises to challenge your body and keep things interesting.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="6s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 06</h2>
+          <p>Take breaks from sitting: Sitting for long periods of time can be harmful to your health. Try to take breaks throughout the day to stand, stretch, and move around.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="7s.jpg" alt="">
+        <div class="info">
+          <h2>Slide 07</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+   
+  </body>
+</html>
+      

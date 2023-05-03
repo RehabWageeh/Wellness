@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wellness</title>
+    <link rel="stylesheet" href="good hygiene.css">
+  </head>
+
+
+
+  <body>
+
+    <div class="img-slider">
+      <div class="slide active">
+        <img src="1h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 01</h2>
+          <p>Wash your hands regularly: Use soap and water to wash your hands often, especially after using the bathroom, before eating, and after blowing your nose, coughing or sneezing. Scrub your hands for at least 20 seconds and dry them completely.</p>
+        </div>
+      </div>
+      
+      <div class="slide">
+        <img src="2h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 02</h2>
+          <p>Cover your mouth and nose when you cough or sneeze: Use a tissue or your elbow to cover your mouth and nose when you cough or sneeze to prevent the spread of germs.
+
+          </p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="3h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 03</h2>
+          <p>Keep your surroundings clean: Regularly clean and disinfect frequently touched objects and surfaces, such as door handles, phones, keyboards, and countertops.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="4h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 04</h2>
+          <p>Practice good oral hygiene: Brush your teeth twice a day and floss daily to prevent dental problems and bad breath.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="5h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 05</h2>
+          <p>Take care of your skin: Keep your skin clean and dry to prevent skin infections. Use water to wash your skin and apply moisturizer regularly to keep it hydrated.
+
+          </p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="6h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 06</h2>
+          <p>Avoid sharing personal items: Don't share personal items, such as towels, razors, or toothbrushes, as they can spread germs and infections.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="7h.jpg" alt="">
+        <div class="info">
+          <h2>Slide 07</h2>
+          <p>Stay home when you're sick: If you're sick, stay home to prevent the spread of germs and infections to others.
+
+          </p>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="btn active"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+        <div class="btn"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+
+  </body>
+</html>
+      
